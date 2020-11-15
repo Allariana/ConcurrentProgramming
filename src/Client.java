@@ -8,7 +8,7 @@ public class Client {
     static final int MIN_RAND = 1;
 
     Random rand = new Random();
-    List<Integer> filesList = new ArrayList<Integer>(); //lista zawierajca rozmiary plikow
+    List<Integer> filesList = new ArrayList<>(); //lista zawierajca rozmiary plikow
     int numberOfFiles = rand.nextInt(MAX_RAND_NUMBER - MIN_RAND) + MIN_RAND; //wylosowanie liczby plikow
     int i;
 
