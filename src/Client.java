@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Client {
@@ -6,14 +8,13 @@ public class Client {
     static final int MIN_RAND = 1;
 
     Random rand = new Random();
-
+    List<Integer> filesList = new ArrayList<Integer>(); //lista zawierajca rozmiary plikow
     int numberOfFiles = rand.nextInt(MAX_RAND_NUMBER - MIN_RAND) + MIN_RAND; //wylosowanie liczby plikow
-    int[] tab = new int[numberOfFiles]; //tablica z rozmiarami plikow
     int i;
 
     public void randFunc(int numberOfFiles) {
         for (i = 0; i < numberOfFiles; i++) {
-            tab[i] = rand.nextInt(MAX_RAND_SIZE - MIN_RAND) + MIN_RAND;
+            filesList.add(rand.nextInt(MAX_RAND_SIZE - MIN_RAND) + MIN_RAND);
         }
     }
 }

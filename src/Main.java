@@ -20,10 +20,9 @@ public class Main {
 
             for (j = 0; j < clients[i].numberOfFiles; j++) {
 
-                System.out.printf(clients[i].tab[j] + " MB - p " + df5.format(loadBalancer.countPriority(i+1,clients[i].tab[j],clients[i].numberOfFiles)));
-
+                System.out.printf(clients[i].filesList.get(j) + " MB - p " + df5.format(loadBalancer.countPriority(i+1,clients[i].filesList.get(j),clients[i].numberOfFiles)));
                 if (j != clients[i].numberOfFiles - 1) System.out.print(", ");
-                else System.out.println(")");
+                else System.out.println(")\n");
 
             }
         }
