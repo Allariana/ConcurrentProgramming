@@ -1,11 +1,16 @@
+import java.text.DecimalFormat;
+
 public class Main {
 
     static int NUMBER_OF_CLIENTS = 5;
+    public static DecimalFormat df5 = new DecimalFormat("#.#####");
 
     public static void main(String[] args) {
 
         int i, j;
+
         Client[] clients = new Client[NUMBER_OF_CLIENTS];
+        LoadBalancer loadBalancer = new LoadBalancer();
 
         for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
 
@@ -15,7 +20,8 @@ public class Main {
 
             for (j = 0; j < clients[i].numberOfFiles; j++) {
 
-                System.out.print(clients[i].tab[j]);
+                System.out.printf(clients[i].tab[j] + " MB - p " + df5.format(loadBalancer.countPriority(i+1,clients[i].tab[j],clients[i].numberOfFiles)));
+
                 if (j != clients[i].numberOfFiles - 1) System.out.print(", ");
                 else System.out.println(")");
 
