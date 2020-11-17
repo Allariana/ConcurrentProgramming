@@ -24,8 +24,8 @@ public class LoadBalancer {
                 }
             }
         }
-        System.out.println(client_number_max + " " + file_index_max);
-        System.out.println(client_number_min + " " + file_index_min);
+        System.out.println("Max priority: client - " + client_number_max + " file - " + file_index_max);
+        System.out.println("Min priority: client - " + client_number_min + " file - " + file_index_min);
     }
 
 }
