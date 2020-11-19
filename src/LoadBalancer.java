@@ -74,13 +74,13 @@ public class LoadBalancer {
     public void printClients(int NUMBER_OF_CLIENTS,Client[] clients){
         for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
 
-            System.out.print("Client " + i + ": " + clients[i].filesList.size() + " files (");
+            System.out.print("Client " + i + ": " + clients[i].filesList.size() + " files ");//" files (");
 
             for (j = 0; j < clients[i].filesList.size(); j++) {
 
-                System.out.printf(clients[i].filesList.get(j) + " MB - p " + df5.format(priority.countPriority(i+1,clients[i].filesList.get(j),clients[i].numberOfFiles)));
-                if (j != clients[i].numberOfFiles - 1) System.out.print(", ");
-                else System.out.println(")\n");
+                //System.out.printf(clients[i].filesList.get(j) + " MB - p " + df5.format(priority.countPriority(i+1,clients[i].filesList.get(j),clients[i].numberOfFiles)));
+//                if (j != clients[i].numberOfFiles - 1) System.out.print(", ");
+//                else System.out.println(")\n");
 
             }
         }

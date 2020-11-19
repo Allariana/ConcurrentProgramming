@@ -1,5 +1,5 @@
 public class Server {
-    private int NUMBER_OF_THREADS = 2;
+    private int NUMBER_OF_THREADS = 5;
     ServerMainThread[] serverMainThreads = new ServerMainThread[NUMBER_OF_THREADS];
     Thread[] threads = new Thread[NUMBER_OF_THREADS];
     LoadBalancer loadBalancer = new LoadBalancer();
@@ -18,7 +18,7 @@ public class Server {
 
             threads[i].join();
         }
-        //loadBalancer.printClients(NUMBER_OF_CLIENTS, clients);
+        loadBalancer.printClients(NUMBER_OF_CLIENTS, clients);
     }
 }
 

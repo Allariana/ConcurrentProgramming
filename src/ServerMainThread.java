@@ -24,7 +24,7 @@ public class ServerMainThread implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        loadBalancer.printClients(NUMBER_OF_CLIENTS, clients);
+        //loadBalancer.printClients(NUMBER_OF_CLIENTS, clients);
 
     }
 }
