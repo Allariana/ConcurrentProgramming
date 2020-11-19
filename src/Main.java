@@ -5,7 +5,7 @@ public class Main {
     static int NUMBER_OF_CLIENTS = 5;
     public static DecimalFormat df5 = new DecimalFormat("#.#####");
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         int i, j;
 
@@ -32,7 +32,6 @@ public class Main {
 
         loadBalancer.getMaxMinPriority(NUMBER_OF_CLIENTS, clients);
         server.startThreads(NUMBER_OF_CLIENTS,clients);
-
 
     }
 }
