@@ -1,15 +1,16 @@
 public class Server {
-    ServerMainThread[] serverMainThreads = new ServerMainThread[5];
-    Thread[] threads = new Thread[5];
+    private int number_of_threads=1;
+    ServerMainThread[] serverMainThreads = new ServerMainThread[number_of_threads];
+    Thread[] threads = new Thread[number_of_threads];
 
-    public void startThreads() {
-        for(int i=0; i<5; i++) {
-            serverMainThreads[i] = new ServerMainThread(i);
+    public void startThreads(int NUMBER_OF_CLIENTS,Client[] clients) {
+        for(int i=0; i<number_of_threads; i++) {
+            serverMainThreads[i] = new ServerMainThread(i, NUMBER_OF_CLIENTS,clients);
         }
-        for(int i=0; i<5; i++) {
+        for(int i=0; i<number_of_threads; i++) {
             threads[i] = new Thread(serverMainThreads[i]);
         }
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < number_of_threads; i++) {
             threads[i].start();
         }
     }

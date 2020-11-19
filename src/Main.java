@@ -19,9 +19,9 @@ public class Main {
 
             clients[i] = new Client();
             clients[i].randFunc(clients[i].numberOfFiles);
-            System.out.print("Client " + i + ": " + clients[i].numberOfFiles + " files (");
+            System.out.print("Client " + i + ": " + clients[i].filesList.size() + " files (");
 
-            for (j = 0; j < clients[i].numberOfFiles; j++) {
+            for (j = 0; j < clients[i].filesList.size(); j++) {
 
                 System.out.printf(clients[i].filesList.get(j) + " MB - p " + df5.format(priority.countPriority(i+1,clients[i].filesList.get(j),clients[i].numberOfFiles)));
                 if (j != clients[i].numberOfFiles - 1) System.out.print(", ");
@@ -31,6 +31,8 @@ public class Main {
         }
 
         loadBalancer.getMaxMinPriority(NUMBER_OF_CLIENTS, clients);
-        server.startThreads();
+        server.startThreads(NUMBER_OF_CLIENTS,clients);
+
+
     }
 }
