@@ -12,6 +12,7 @@ public class Main {
         Client[] clients = new Client[NUMBER_OF_CLIENTS];
         Priority priority = new Priority();
         LoadBalancer loadBalancer = new LoadBalancer();
+        Server server = new Server();
 
 
         for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
@@ -30,5 +31,6 @@ public class Main {
         }
 
         loadBalancer.getMaxMinPriority(NUMBER_OF_CLIENTS, clients);
+        server.startThreads();
     }
 }
