@@ -12,20 +12,17 @@ public class ServerMainThread implements Runnable {
 
     @Override
     public void run() {
-        if (id != 4) {
-            //System.out.println("Watek "+id);
-            time = loadBalancer.removeFileMax(NUMBER_OF_CLIENTS, clients);
-        } else {
-            //System.out.println("Watek "+id);
-            time = loadBalancer.removeFileMin(NUMBER_OF_CLIENTS, clients);
-        }
-        try {
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //loadBalancer.printClients(NUMBER_OF_CLIENTS, clients);
-
+            if (id != 4) {
+                time = loadBalancer.removeFileMax(NUMBER_OF_CLIENTS, clients);
+            } else {
+                time = loadBalancer.removeFileMin(NUMBER_OF_CLIENTS, clients);
+                loadBalancer.printClients(NUMBER_OF_CLIENTS, clients);
+            }
+            try {
+                Thread.sleep(time);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
     }
 }
 
