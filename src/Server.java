@@ -14,11 +14,11 @@ public class Server {
         for (int i = 0; i < NUMBER_OF_THREADS; i++) {
             threads[i].start();
         }
-        for (int i = 0; i < NUMBER_OF_THREADS; i++) {
-
-            threads[i].join();
-        }
-        //loadBalancer.printClients(NUMBER_OF_CLIENTS, clients);
+//        for (int i = 0; i < NUMBER_OF_THREADS; i++) {
+//
+//            threads[i].join();
+//        }
+//        loadBalancer.printClients(NUMBER_OF_CLIENTS, clients);
     }
 }
 

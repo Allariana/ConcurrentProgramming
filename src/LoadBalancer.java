@@ -13,7 +13,7 @@ public class LoadBalancer {
 
             for (j = 0; j < clients[i].filesList.size(); j++) {
 
-                p = priority.countPriority(i + 1, clients[i].filesList.get(j), clients[i].numberOfFiles);
+                p = priority.countPriority(i + 1, clients[i].filesList.get(j), clients[i].filesList.size());
 
                 if (p > max_priority) {
                     max_priority = p;
@@ -31,6 +31,7 @@ public class LoadBalancer {
         System.out.println("Min priority: client - " + client_number_min + " file - " + file_index_min);
     }
     public int removeFileMin(int NUMBER_OF_CLIENTS,Client[] clients) {
+        min_priority = 1000;
         int time=0;
         for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
 
@@ -51,36 +52,44 @@ public class LoadBalancer {
     return time;
     }
     public int removeFileMax(int NUMBER_OF_CLIENTS,Client[] clients) {
+        max_priority=0;
         int time=0;
-        for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
+        //try {
+            for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
 
-            for (j = 0; j < clients[i].filesList.size(); j++) {
-
-                p = priority.countPriority(i + 1, clients[i].filesList.get(j), clients[i].numberOfFiles);
-
-                if (p > max_priority) {
-                    time = clients[i].filesList.get(j)*1000;
-                    max_priority = p;
-                    client_number_max = i;
-                    file_index_max = j;
+                for (j = 0; j < clients[i].filesList.size(); j++) {
+                    //if(i==0 && clients[i].filesList.size()==0)System.out.println("Tutaj");
+                    p = priority.countPriority(i + 1, clients[i].filesList.get(j), clients[i].filesList.size());
+                    //System.out.print(p);
+                    if (p > max_priority) {
+                        time = clients[i].filesList.get(j) * 100;
+                        max_priority = p;
+                        client_number_max = i;
+                        file_index_max = j;
+                    }
                 }
             }
-        }
+            clients[client_number_max].filesList.remove(file_index_max);
+//        }catch (IndexOutOfBoundsException indexOutOfBoundsException) {
+//
+//        }
 
-        clients[client_number_max].filesList.remove(file_index_max);
+
+        //if(clients[i].filesList.size()==0)clients[i]=null;
 
         return time;
     }
     public void printClients(int NUMBER_OF_CLIENTS,Client[] clients){
+        System.out.println();
         for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
 
             System.out.print("Client " + i + ": " + clients[i].filesList.size() + " files ");//" files (");
 
             for (j = 0; j < clients[i].filesList.size(); j++) {
 
-                //System.out.printf(clients[i].filesList.get(j) + " MB - p " + df5.format(priority.countPriority(i+1,clients[i].filesList.get(j),clients[i].numberOfFiles)));
-//                if (j != clients[i].numberOfFiles - 1) System.out.print(", ");
-//                else System.out.println(")\n");
+                System.out.printf(clients[i].filesList.get(j) + " MB - p " + df5.format(priority.countPriority(i+1,clients[i].filesList.get(j),clients[i].filesList.size())));
+                if (j != clients[i].filesList.size() - 1) System.out.print(", ");
+                else System.out.println(")\n");
 
             }
         }
