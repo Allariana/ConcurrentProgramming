@@ -14,7 +14,6 @@ public class Main {
         LoadBalancer loadBalancer = new LoadBalancer();
         Server server = new Server();
 
-
         for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
 
             clients[i] = new Client();

@@ -1,5 +1,6 @@
 public class ServerMainThread implements Runnable {
     private int id, time;
+
     private static int NUMBER_OF_CLIENTS;
     Client[] clients;
     LoadBalancer loadBalancer = new LoadBalancer();
@@ -13,16 +14,13 @@ public class ServerMainThread implements Runnable {
     @Override
     public void run() {
         while(true) {
-//            if (id != 2) {
-//                time = loadBalancer.removeFileMax(NUMBER_OF_CLIENTS, clients);
-//            } else {
-//                time=18000;
-//                //time = loadBalancer.removeFileMin(NUMBER_OF_CLIENTS, clients);
-//                loadBalancer.printClients(NUMBER_OF_CLIENTS, clients);
-//                loadBalancer.getMaxMinPriority(NUMBER_OF_CLIENTS, clients);
-//            }
-            time = loadBalancer.removeFileMax(NUMBER_OF_CLIENTS, clients);
-            loadBalancer.printClients(NUMBER_OF_CLIENTS, clients);
+            if (id != 4) {
+                time = loadBalancer.removeFileMax(NUMBER_OF_CLIENTS, clients);
+            } else {
+                time = loadBalancer.removeFileMin(NUMBER_OF_CLIENTS, clients);
+                loadBalancer.printClients(NUMBER_OF_CLIENTS, clients);
+            }
+
             try {
                 Thread.sleep(time);
             } catch (InterruptedException e) {
