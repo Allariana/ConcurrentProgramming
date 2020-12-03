@@ -1,5 +1,5 @@
 public class Server {
-    private int NUMBER_OF_THREADS = 5;
+    private int NUMBER_OF_THREADS = 6;
     ServerMainThread[] serverMainThreads = new ServerMainThread[NUMBER_OF_THREADS];
     Thread[] threads = new Thread[NUMBER_OF_THREADS];
 

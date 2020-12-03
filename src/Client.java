@@ -3,8 +3,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Client {
-    static final int MAX_RAND_NUMBER = 10;
-    static final int MAX_RAND_SIZE = 100;
+    static final int MAX_RAND_NUMBER = 20;
+    static final int MAX_RAND_SIZE = 300;
     static final int MIN_RAND = 1;
 
     Random rand = new Random();

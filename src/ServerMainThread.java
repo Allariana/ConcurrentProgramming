@@ -18,6 +18,7 @@ public class ServerMainThread implements Runnable {
                 time = loadBalancer.removeFileMax(NUMBER_OF_CLIENTS, clients);
             } else {
                 time = loadBalancer.removeFileMin(NUMBER_OF_CLIENTS, clients);
+                if(time==0)time=5000;
                 loadBalancer.printClients(NUMBER_OF_CLIENTS, clients);
             }
 
