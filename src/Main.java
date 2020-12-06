@@ -6,7 +6,7 @@ import static java.lang.Thread.sleep;
 
 public class Main {
 
-    static int NUMBER_OF_CLIENTS = 5;
+    static int NUMBER_OF_CLIENTS = 2;
     public static DecimalFormat df5 = new DecimalFormat("#.#####");
 
     public static void main(String[] args) throws InterruptedException, IOException {
@@ -35,7 +35,7 @@ public class Main {
         }
 
         loadBalancer.getMaxMinPriority(NUMBER_OF_CLIENTS, clients);
-        server.startThreads(NUMBER_OF_CLIENTS,clients);
+        //server.startThreads(NUMBER_OF_CLIENTS,clients);
 
         EventQueue.invokeLater(new Runnable() {
             @Override
@@ -47,7 +47,7 @@ public class Main {
                     while (true){
                         f.refresh();
                         try {
-                            Thread.sleep(500);
+                            Thread.sleep(250);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -59,6 +59,8 @@ public class Main {
                 }
             }
         });
+
+        server.startThreads(NUMBER_OF_CLIENTS,clients);
 
     }
 }

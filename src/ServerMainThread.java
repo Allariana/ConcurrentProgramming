@@ -14,7 +14,7 @@ public class ServerMainThread implements Runnable {
     @Override
     public void run() {
         while(true) {
-            if (id != 4) {
+            if (id != 4 && id !=3) { //2 watki odwrotnie zamiast 1
                 time = loadBalancer.removeFileMax(NUMBER_OF_CLIENTS, clients);
             } else {
                 time = loadBalancer.removeFileMin(NUMBER_OF_CLIENTS, clients);

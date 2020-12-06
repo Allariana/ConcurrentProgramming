@@ -4,8 +4,8 @@ import javax.swing.*;
 
 public class Frame extends JFrame
 {
-    ArrayList<JList<String>> jl;
-    ArrayList<DefaultListModel<String>> dfm;
+//    ArrayList<JList<String>> jl;
+//    ArrayList<DefaultListModel<String>> dfm;
     private JList<String> fileList1, fileList2;
     private DefaultListModel<String> filesListData1, filesListData2;
     private static int NUMBER_OF_CLIENTS;
@@ -21,15 +21,19 @@ public class Frame extends JFrame
         setSize(new Dimension(500, 500));
         filesListData1 = new DefaultListModel<>();
         fileList1 = new JList(filesListData1);
-//        for(i=0;i<NUMBER_OF_CLIENTS;i++){
-//            dfm.add(filesListData1);
-//            jl.add(fileList1);
-//        }
-
         fileList1.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         fileList1.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         fileList1.setVisibleRowCount(-1);
         fileList1.setBounds(10, 0, 50, 440);
+//        for(i=0;i<NUMBER_OF_CLIENTS;i++){
+//            fileList1.setBounds(10, 0, 50, 440);
+//            dfm.add(filesListData1);
+//            jl.add(fileList1);
+//            //jl[i].setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+//        }
+
+
+
 
         filesListData2 = new DefaultListModel<>();
         fileList2 = new JList(filesListData2);
@@ -42,14 +46,13 @@ public class Frame extends JFrame
 
 
     public void refresh(){
+
         filesListData1.clear();
         filesListData1.addElement("Client 0");
         for (j = 0; j < clients[0].filesList.size(); j++) {
             filesListData1.addElement(clients[0].filesList.get(j).toString() + " MB");
         }
-        setLayout(null);
         add(fileList1);
-        setVisible(true);
 
         filesListData2.clear();
         filesListData2.addElement("Client 1");
