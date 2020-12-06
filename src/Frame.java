@@ -31,8 +31,8 @@ public class Frame extends JFrame
         fileList1.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         fileList1.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         fileList1.setVisibleRowCount(-1);
-        fileList1.setBounds(10, 0, 190, 440);
-        fileList1.setBackground(Color.orange);
+        fileList1.setBounds(10, 0, 50, 440);
+        //fileList1.setBackground(Color.orange);
         listFiles(NUMBER_OF_CLIENTS,clients,filesListData1);
 //        lclient = new JLabel("Client");
 //        lclient.setBounds(50,30,100,20);
@@ -54,7 +54,7 @@ public class Frame extends JFrame
     {
         list.clear();
         for (j = 0; j < clients[i].filesList.size(); j++) {
-            list.addElement(clients[0].filesList.get(j).toString());
+            list.addElement(clients[0].filesList.get(j).toString() + " MB");
         }
 
 

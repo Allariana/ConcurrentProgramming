@@ -2,12 +2,14 @@ import java.awt.*;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
+import static java.lang.Thread.sleep;
+
 public class Main {
 
-    static int NUMBER_OF_CLIENTS = 6;
+    static int NUMBER_OF_CLIENTS = 5;
     public static DecimalFormat df5 = new DecimalFormat("#.#####");
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
 
         int i, j;
@@ -31,6 +33,13 @@ public class Main {
 
             }
         }
+
+
+        //sleep(500);
+
+        loadBalancer.getMaxMinPriority(NUMBER_OF_CLIENTS, clients);
+        server.startThreads(NUMBER_OF_CLIENTS,clients);
+
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -41,8 +50,6 @@ public class Main {
                 }
             }
         });
-        loadBalancer.getMaxMinPriority(NUMBER_OF_CLIENTS, clients);
-        server.startThreads(NUMBER_OF_CLIENTS,clients);
 
     }
 }
