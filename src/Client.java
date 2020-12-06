@@ -5,7 +5,7 @@ import java.util.Random;
 public class Client {
     static final int MAX_RAND_NUMBER = 20;
     static final int MAX_RAND_SIZE = 300;
-    static final int MIN_RAND = 1;
+    static final int MIN_RAND = 4;
 
     Random rand = new Random();
     List<Integer> filesList = new ArrayList<>(); //lista zawierajca rozmiary plikow

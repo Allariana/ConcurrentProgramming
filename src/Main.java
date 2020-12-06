@@ -9,7 +9,7 @@ public class Main {
     static int NUMBER_OF_CLIENTS = 5;
     public static DecimalFormat df5 = new DecimalFormat("#.#####");
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
 
 
         int i, j;
@@ -34,9 +34,6 @@ public class Main {
             }
         }
 
-
-        //sleep(500);
-
         loadBalancer.getMaxMinPriority(NUMBER_OF_CLIENTS, clients);
         server.startThreads(NUMBER_OF_CLIENTS,clients);
 
@@ -44,8 +41,13 @@ public class Main {
             @Override
             public void run() {
                 try {
-                    new Frame(NUMBER_OF_CLIENTS, clients);
-                } catch (IOException e) {
+                    Frame f = new Frame(NUMBER_OF_CLIENTS, clients);
+//                    while (true){
+                        f.refresh();
+//                        sleep(500);
+//                    }
+
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
