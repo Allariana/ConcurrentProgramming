@@ -42,10 +42,17 @@ public class Main {
             public void run() {
                 try {
                     Frame f = new Frame(NUMBER_OF_CLIENTS, clients);
-//                    while (true){
+                    new Thread(() ->
+                    {
+                    while (true){
                         f.refresh();
-//                        sleep(500);
-//                    }
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    }).start();
 
                 } catch (Exception e) {
                     e.printStackTrace();

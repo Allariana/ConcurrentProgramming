@@ -1,8 +1,11 @@
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class Frame extends JFrame
 {
+    ArrayList<JList<String>> jl;
+    ArrayList<DefaultListModel<String>> dfm;
     private JList<String> fileList1, fileList2;
     private DefaultListModel<String> filesListData1, filesListData2;
     private static int NUMBER_OF_CLIENTS;
@@ -16,9 +19,13 @@ public class Frame extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setSize(new Dimension(500, 500));
-
         filesListData1 = new DefaultListModel<>();
         fileList1 = new JList(filesListData1);
+//        for(i=0;i<NUMBER_OF_CLIENTS;i++){
+//            dfm.add(filesListData1);
+//            jl.add(fileList1);
+//        }
+
         fileList1.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         fileList1.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         fileList1.setVisibleRowCount(-1);
@@ -31,7 +38,6 @@ public class Frame extends JFrame
         fileList2.setVisibleRowCount(-1);
         fileList2.setBounds(90, 0, 50, 440);
 
-//        refresh();
     }
 
 
