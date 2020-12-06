@@ -6,7 +6,7 @@ import static java.lang.Thread.sleep;
 
 public class Main {
 
-    static int NUMBER_OF_CLIENTS = 2;
+    static int NUMBER_OF_CLIENTS = 5;
     public static DecimalFormat df5 = new DecimalFormat("#.#####");
 
     public static void main(String[] args) throws InterruptedException, IOException {
@@ -23,18 +23,18 @@ public class Main {
 
             clients[i] = new Client();
             clients[i].randFunc(clients[i].numberOfFiles);
-            System.out.print("Client " + i + ": " + clients[i].filesList.size() + " files (");
+            //System.out.print("Client " + i + ": " + clients[i].filesList.size() + " files (");
 
             for (j = 0; j < clients[i].filesList.size(); j++) {
 
-                System.out.printf(clients[i].filesList.get(j) + " MB - p " + df5.format(priority.countPriority(i+1,clients[i].filesList.get(j),clients[i].numberOfFiles)));
-                if (j != clients[i].numberOfFiles - 1) System.out.print(", ");
-                else System.out.println(")\n");
+                //System.out.printf(clients[i].filesList.get(j) + " MB - p " + df5.format(priority.countPriority(i+1,clients[i].filesList.get(j),clients[i].numberOfFiles)));
+//                if (j != clients[i].numberOfFiles - 1) System.out.print(", ");
+//                else System.out.println(")\n");
 
             }
         }
 
-        loadBalancer.getMaxMinPriority(NUMBER_OF_CLIENTS, clients);
+        //loadBalancer.getMaxMinPriority(NUMBER_OF_CLIENTS, clients);
         //server.startThreads(NUMBER_OF_CLIENTS,clients);
 
         EventQueue.invokeLater(new Runnable() {
@@ -47,7 +47,7 @@ public class Main {
                     while (true){
                         f.refresh();
                         try {
-                            Thread.sleep(250);
+                            Thread.sleep(200);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

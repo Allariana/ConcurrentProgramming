@@ -42,7 +42,7 @@ public class LoadBalancer {
                 p = priority.countPriority(i + 1, clients[i].filesList.get(j), clients[i].numberOfFiles);
 
                 if (p < min_priority) {
-                    time = clients[i].filesList.get(j) * 100;
+                    time = clients[i].filesList.get(j) * 90;
                     min_priority = p;
                     client_number_min = i;
                     file_index_min = j;
@@ -66,7 +66,7 @@ public class LoadBalancer {
                     p = priority.countPriority(i + 1, clients[i].filesList.get(j), clients[i].filesList.size());
 
                     if (p > max_priority) {
-                        time = clients[i].filesList.get(j) * 100;
+                        time = clients[i].filesList.get(j) * 90;
                         max_priority = p;
                         client_number_max = i;
                         file_index_max = j;
