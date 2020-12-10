@@ -55,7 +55,7 @@ public class LoadBalancer {
     return time;
     }
     public int removeFileMax(int NUMBER_OF_CLIENTS,Client[] clients) {
-        int client_number_max = -1, file_index_max = -1, client_number_min = -1, file_index_min = -1;
+        int client_number_max = -1, file_index_max = -1;
         max_priority=0;
         int time=0;
 

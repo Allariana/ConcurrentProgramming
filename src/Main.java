@@ -1,11 +1,11 @@
-import javax.swing.*;
-import java.awt.*;
-
-import static java.lang.Thread.sleep;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 public class Main {
 
     static int NUMBER_OF_CLIENTS = 5;
+
 //    public static DecimalFormat df5 = new DecimalFormat("#.#####");
 
     public static void main(String[] args) throws Exception {
@@ -32,40 +32,55 @@ public class Main {
 //
 //            }
         }
+        Frame f = new Frame(NUMBER_OF_CLIENTS, clients);
 
-        //loadBalancer.getMaxMinPriority(NUMBER_OF_CLIENTS, clients);
+        ActionListener taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                f.refresh();
+            }
+        };
+        Timer timer = new Timer(100 ,taskPerformer);
+        timer.setRepeats(true);
+        timer.start();
 
-        try {
-            EventQueue.invokeLater(new Runnable() {
+        Thread.sleep(100);
 
-            //SwingUtilities.invokeLater(new Runnable(){
-            //SwingUtilities.invokeAndWait(new Runnable(){
-                @Override
-                public void run() {
-                    try {
-                        Frame f = new Frame(NUMBER_OF_CLIENTS, clients);
-                        new Thread(() ->
-                        {
-                            while (true) {
-                                f.refresh();
-                                try {
-                                    sleep(130);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }).start();
-
-                    } catch (Exception e) {
-
-                    }
-                }
-            });
-        }catch (Exception e) {
-
-        }
-        //sleep(1000);
         server.startThreads(NUMBER_OF_CLIENTS,clients);
-
     }
 }
+//        try {
+//            EventQueue.invokeLater(new Runnable() {
+////            try{
+//            //SwingUtilities.invokeLater(new Runnable(){
+//            //SwingUtilities.invokeAndWait(new Runnable(){
+//                @Override
+//                public void run() {
+//                    try {
+//                        Frame f = new Frame(NUMBER_OF_CLIENTS, clients);
+//                        new Thread(() ->
+//                        {
+//                            while (true) {
+//                                f.refresh();
+//                                try {
+//                                    sleep(130);
+//                                } catch (Exception e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                        }).start();
+//
+//                    } catch (Exception e) {
+//
+//                    }
+//                }
+//            });
+////            } catch (Exception e) {
+////
+////            }
+//        }catch (Exception e) {
+//
+//        }
+        //sleep(1000);
+
+
+
