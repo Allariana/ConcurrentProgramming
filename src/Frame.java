@@ -3,6 +3,11 @@ import javax.swing.*;
 
 public class Frame extends JFrame
 {
+    JLabel jLabel1 = new JLabel("Server 1");
+    JLabel jLabel2 = new JLabel("Server 2");
+    JLabel jLabel3 = new JLabel("Server 3");
+    JLabel jLabel4 = new JLabel("Server 4");
+    JLabel jLabel5 = new JLabel("Server 5");
 //    ArrayList<JList<String>> jl = new ArrayList<>();
 //    ArrayList<DefaultListModel<String>> dfm = new ArrayList<>();
     private JList<String> fileList1, fileList2, fileList3, fileList4, fileList5;
@@ -17,13 +22,13 @@ public class Frame extends JFrame
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
-        setSize(new Dimension(410, 450));
+        setSize(new Dimension(410, 550));
         filesListData1 = new DefaultListModel<>();
         fileList1 = new JList(filesListData1);
         fileList1.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         fileList1.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         fileList1.setVisibleRowCount(-1);
-        fileList1.setBounds(10, 0, 50, 440);
+        fileList1.setBounds(10, 50, 50, 500);
 //        for(i=0;i<NUMBER_OF_CLIENTS;i++){
 //            fileList1.setBounds(10, 0, 50, 440);
 //            dfm.add(filesListData1);
@@ -36,28 +41,39 @@ public class Frame extends JFrame
         fileList2.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         fileList2.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         fileList2.setVisibleRowCount(-1);
-        fileList2.setBounds(90, 0, 50, 440);
+        fileList2.setBounds(90, 50, 50, 500);
 
         filesListData3 = new DefaultListModel<>();
         fileList3 = new JList(filesListData3);
         fileList3.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         fileList3.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         fileList3.setVisibleRowCount(-1);
-        fileList3.setBounds(170, 0, 50, 440);
+        fileList3.setBounds(170, 50, 50, 500);
 
         filesListData4 = new DefaultListModel<>();
         fileList4 = new JList(filesListData4);
         fileList4.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         fileList4.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         fileList4.setVisibleRowCount(-1);
-        fileList4.setBounds(250, 0, 50, 440);
+        fileList4.setBounds(250, 50, 50, 500);
 
         filesListData5 = new DefaultListModel<>();
         fileList5 = new JList(filesListData5);
         fileList5.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         fileList5.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         fileList5.setVisibleRowCount(-1);
-        fileList5.setBounds(330, 0, 50, 440);
+        fileList5.setBounds(330, 50, 50, 500);
+
+        jLabel1.setBounds(10,0,50,50);
+        add(jLabel1);
+        jLabel2.setBounds(90,0,50,50);
+        add(jLabel2);
+        jLabel3.setBounds(170,0,50,50);
+        add(jLabel3);
+        jLabel4.setBounds(250,0,50,50);
+        add(jLabel4);
+        jLabel5.setBounds(330,0,50,50);
+        add(jLabel5);
 
     }
 
