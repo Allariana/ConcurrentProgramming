@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class Frame extends JFrame
@@ -13,9 +14,9 @@ public class Frame extends JFrame
     private JList<String> fileList1, fileList2, fileList3, fileList4, fileList5;
     private DefaultListModel<String> filesListData1, filesListData2, filesListData3, filesListData4, filesListData5;
     private static int NUMBER_OF_CLIENTS;
-    Client[] clients;
+    ArrayList<Client> clients = new ArrayList<>();
     int i,j;
-    public Frame(int NUMBER_OF_CLIENTS,Client[] clients) {
+    public Frame(int NUMBER_OF_CLIENTS, ArrayList<Client> clients) {
         super("Clients");
         this.clients = clients;
         this.NUMBER_OF_CLIENTS = NUMBER_OF_CLIENTS;
@@ -82,36 +83,36 @@ public class Frame extends JFrame
         try{
         filesListData1.clear();
         filesListData1.addElement("Client 0");
-        for (j = 0; j < clients[0].filesList.size(); j++) {
-            filesListData1.addElement(clients[0].filesList.get(j).toString() + " MB");
+        for (j = 0; j < clients.get(0).filesList.size(); j++) {
+            filesListData1.addElement(clients.get(0).filesList.get(j).toString() + " MB");
         }
         add(fileList1);
 
         filesListData2.clear();
         filesListData2.addElement("Client 1");
-        for (j = 0; j < clients[1].filesList.size(); j++) {
-            filesListData2.addElement(clients[1].filesList.get(j).toString() + " MB");
+        for (j = 0; j < clients.get(1).filesList.size(); j++) {
+            filesListData2.addElement(clients.get(1).filesList.get(j).toString() + " MB");
         }
         add(fileList2);
 
         filesListData3.clear();
         filesListData3.addElement("Client 2");
-        for (j = 0; j < clients[2].filesList.size(); j++) {
-            filesListData3.addElement(clients[2].filesList.get(j).toString() + " MB");
+        for (j = 0; j < clients.get(2).filesList.size(); j++) {
+            filesListData3.addElement(clients.get(2).filesList.get(j).toString() + " MB");
         }
         add(fileList3);
 
         filesListData4.clear();
         filesListData4.addElement("Client 3");
-        for (j = 0; j < clients[3].filesList.size(); j++) {
-            filesListData4.addElement(clients[3].filesList.get(j).toString() + " MB");
+        for (j = 0; j < clients.get(3).filesList.size(); j++) {
+            filesListData4.addElement(clients.get(3).filesList.get(j).toString() + " MB");
         }
         add(fileList4);
 
         filesListData5.clear();
         filesListData5.addElement("Client 4");
-        for (j = 0; j < clients[4].filesList.size(); j++) {
-            filesListData5.addElement(clients[4].filesList.get(j).toString() + " MB");
+        for (j = 0; j < clients.get(4).filesList.size(); j++) {
+            filesListData5.addElement(clients.get(4).filesList.get(j).toString() + " MB");
         }
         add(fileList5);
 

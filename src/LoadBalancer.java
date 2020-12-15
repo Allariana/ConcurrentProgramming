@@ -1,4 +1,5 @@
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class LoadBalancer {
     public static DecimalFormat df5 = new DecimalFormat("#.#####");
@@ -30,19 +31,19 @@ public class LoadBalancer {
         System.out.println("Max priority: client - " + client_number_max + " file - " + file_index_max);
         System.out.println("Min priority: client - " + client_number_min + " file - " + file_index_min);
     }
-    public int removeFileMin(int NUMBER_OF_CLIENTS,Client[] clients) {
+    public int removeFileMin(int NUMBER_OF_CLIENTS, ArrayList<Client> clients) {
         int client_number_min = -1, file_index_min = -1;
         min_priority = 1000;
         int time=0;
 
         for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
 
-            for (j = 0; j < clients[i].filesList.size(); j++) {
+            for (j = 0; j < clients.get(i).filesList.size(); j++) {
 
-                p = priority.countPriority(i + 1, clients[i].filesList.get(j), clients[i].numberOfFiles);
+                p = priority.countPriority(i + 1, clients.get(i).filesList.get(j), clients.get(i).numberOfFiles);
 
                 if (p < min_priority) {
-                    time = clients[i].filesList.get(j) * 75;
+                    time = clients.get(i).filesList.get(j) * 75;
                     min_priority = p;
                     client_number_min = i;
                     file_index_min = j;
@@ -50,30 +51,30 @@ public class LoadBalancer {
             }
         }
 
-        if(client_number_min!=-1)clients[client_number_min].filesList.remove(file_index_min);
+        if(client_number_min!=-1)clients.get(client_number_min).filesList.remove(file_index_min);
 
     return time;
     }
-    public int removeFileMax(int NUMBER_OF_CLIENTS,Client[] clients) {
+    public int removeFileMax(int NUMBER_OF_CLIENTS,ArrayList<Client> clients) {
         int client_number_max = -1, file_index_max = -1;
         max_priority=0;
         int time=0;
 
             for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
 
-                for (j = 0; j < clients[i].filesList.size(); j++) {
+                for (j = 0; j < clients.get(i).filesList.size(); j++) {
 
-                    p = priority.countPriority(i + 1, clients[i].filesList.get(j), clients[i].filesList.size());
+                    p = priority.countPriority(i + 1, clients.get(i).filesList.get(j), clients.get(i).filesList.size());
 
                     if (p > max_priority) {
-                        time = clients[i].filesList.get(j) * 75;
+                        time = clients.get(i).filesList.get(j) * 75;
                         max_priority = p;
                         client_number_max = i;
                         file_index_max = j;
                     }
                 }
             }
-            if(client_number_max!=-1)clients[client_number_max].filesList.remove(file_index_max);
+            if(client_number_max!=-1)clients.get(client_number_max).filesList.remove(file_index_max);
 
         return time;
     }

@@ -1,27 +1,24 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.Timer;
 
 public class Main {
 
     static int NUMBER_OF_CLIENTS = 5;
 
-//    public static DecimalFormat df5 = new DecimalFormat("#.#####");
-
     public static void main(String[] args) throws Exception {
 
-
         int i, j;
-
-        Client[] clients = new Client[NUMBER_OF_CLIENTS];
+        ArrayList<Client> clients = new ArrayList<>();
 //        Priority priority = new Priority();
 //        LoadBalancer loadBalancer = new LoadBalancer();
         Server server = new Server();
 
         for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
 
-            clients[i] = new Client();
-            clients[i].randFunc(clients[i].numberOfFiles);
+            clients.add(new Client());
+            clients.get(i).randFunc(clients.get(i).numberOfFiles);
             //System.out.print("Client " + i + ": " + clients[i].filesList.size() + " files (");
 
 //            for (j = 0; j < clients[i].filesList.size(); j++) {
