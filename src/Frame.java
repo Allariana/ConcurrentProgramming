@@ -1,4 +1,5 @@
-import java.awt.Dimension;
+
+import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -9,6 +10,7 @@ public class Frame extends JFrame
     JLabel jLabel3 = new JLabel("Server 3");
     JLabel jLabel4 = new JLabel("Server 4");
     JLabel jLabel5 = new JLabel("Server 5");
+    JButton button = new JButton("Add client");
 //    ArrayList<JList<String>> jl = new ArrayList<>();
 //    ArrayList<DefaultListModel<String>> dfm = new ArrayList<>();
     private JList<String> fileList1, fileList2, fileList3, fileList4, fileList5;
@@ -23,7 +25,7 @@ public class Frame extends JFrame
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
-        setSize(new Dimension(410, 550));
+        setSize(new Dimension(600, 600));
         filesListData1 = new DefaultListModel<>();
         fileList1 = new JList(filesListData1);
         fileList1.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -75,6 +77,8 @@ public class Frame extends JFrame
         add(jLabel4);
         jLabel5.setBounds(330,0,50,50);
         add(jLabel5);
+        button.setBounds(450,500,100,40);
+        add(button);
 
     }
 
