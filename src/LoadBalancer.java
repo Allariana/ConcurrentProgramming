@@ -31,12 +31,12 @@ public class LoadBalancer {
         System.out.println("Max priority: client - " + client_number_max + " file - " + file_index_max);
         System.out.println("Min priority: client - " + client_number_min + " file - " + file_index_min);
     }
-    public int removeFileMin(int NUMBER_OF_CLIENTS, ArrayList<Client> clients) {
+    public int removeFileMin(ArrayList<Client> clients) {
         int client_number_min = -1, file_index_min = -1;
         min_priority = 1000;
         int time=0;
 
-        for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
+        for (i = 0; i < clients.size(); i++) {
 
             for (j = 0; j < clients.get(i).filesList.size(); j++) {
 
@@ -55,12 +55,12 @@ public class LoadBalancer {
 
     return time;
     }
-    public int removeFileMax(int NUMBER_OF_CLIENTS,ArrayList<Client> clients) {
+    public int removeFileMax(ArrayList<Client> clients) {
         int client_number_max = -1, file_index_max = -1;
         max_priority=0;
         int time=0;
 
-            for (i = 0; i < NUMBER_OF_CLIENTS; i++) {
+            for (i = 0; i < clients.size(); i++) {
 
                 for (j = 0; j < clients.get(i).filesList.size(); j++) {
 

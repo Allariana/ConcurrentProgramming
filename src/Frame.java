@@ -1,10 +1,11 @@
-
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 
 public class Frame extends JFrame
 {
+    Server server = new Server();
     JLabel jLabel1 = new JLabel("Server 1");
     JLabel jLabel2 = new JLabel("Server 2");
     JLabel jLabel3 = new JLabel("Server 3");
@@ -18,10 +19,10 @@ public class Frame extends JFrame
     private static int NUMBER_OF_CLIENTS;
     ArrayList<Client> clients = new ArrayList<>();
     int i,j;
-    public Frame(int NUMBER_OF_CLIENTS, ArrayList<Client> clients) {
+    public Frame() {
         super("Clients");
-        this.clients = clients;
-        this.NUMBER_OF_CLIENTS = NUMBER_OF_CLIENTS;
+        //this.clients = clients;
+        //this.NUMBER_OF_CLIENTS = NUMBER_OF_CLIENTS;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
@@ -79,10 +80,22 @@ public class Frame extends JFrame
         add(jLabel5);
         button.setBounds(450,500,100,40);
         add(button);
-
+        setLayout(null);
+        setVisible(true);
+        button.addActionListener(new AbstractAction()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                clients.add(new Client());
+                clients.get(clients.size()-1).randFunc(clients.get(clients.size()-1).numberOfFiles);
+            }
+        });
     }
 
-
+    public void startServer(){
+        server.startThreads(clients);
+    }
     public void refresh(){
         try{
         filesListData1.clear();

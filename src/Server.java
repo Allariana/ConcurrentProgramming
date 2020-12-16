@@ -5,9 +5,9 @@ public class Server {
     ServerMainThread[] serverMainThreads = new ServerMainThread[NUMBER_OF_THREADS];
     Thread[] threads = new Thread[NUMBER_OF_THREADS];
 
-    public void startThreads(int NUMBER_OF_CLIENTS, ArrayList<Client> clients) {
+    public void startThreads(ArrayList<Client> clients) {
         for (int i = 0; i < NUMBER_OF_THREADS; i++) {
-            serverMainThreads[i] = new ServerMainThread(i, NUMBER_OF_CLIENTS, clients);
+            serverMainThreads[i] = new ServerMainThread(i, clients);
         }
         for (int i = 0; i < NUMBER_OF_THREADS; i++) {
             threads[i] = new Thread(serverMainThreads[i]);
