@@ -5,7 +5,7 @@ public class Server {
     ServerMainThread[] serverMainThreads = new ServerMainThread[NUMBER_OF_THREADS];
     Thread[] threads = new Thread[NUMBER_OF_THREADS];
 
-    public void startThreads(ArrayList<Client> clients, int tab[][]) {
+    public void startThreads(ArrayList<Client> clients, int tab[][]) throws InterruptedException {
         for (int i = 0; i < NUMBER_OF_THREADS; i++) {
             serverMainThreads[i] = new ServerMainThread(i, clients, tab);
         }
@@ -14,6 +14,8 @@ public class Server {
         }
         for (int i = 0; i < NUMBER_OF_THREADS; i++) {
             threads[i].start();
+            //wait(5);
+
         }
     }
 }

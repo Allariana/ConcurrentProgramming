@@ -7,11 +7,7 @@ public class Frame extends JFrame {
     LoadBalancer loadBalancer = new LoadBalancer();
     Server server = new Server();
     int tab[][] = new int[5][3];
-    JLabel jLabel1 = new JLabel("Server 1");
-    JLabel jLabel2 = new JLabel("Server 2");
-    JLabel jLabel3 = new JLabel("Server 3");
-    JLabel jLabel4 = new JLabel("Server 4");
-    JLabel jLabel5 = new JLabel("Server 5");
+
     JButton button = new JButton("Add client");
 
     ArrayList<DefaultListModel<String>> dfm = new ArrayList<>();
@@ -31,16 +27,7 @@ public class Frame extends JFrame {
                 tab[i][j] = -1;
             }
         }
-//        jLabel1.setBounds(10, 0, 50, 50);
-//        add(jLabel1);
-//        jLabel2.setBounds(90, 0, 50, 50);
-//        add(jLabel2);
-//        jLabel3.setBounds(170, 0, 50, 50);
-//        add(jLabel3);
-//        jLabel4.setBounds(250, 0, 50, 50);
-//        add(jLabel4);
-//        jLabel5.setBounds(330, 0, 50, 50);
-//        add(jLabel5);
+
         button.setBounds(850, 600, 100, 40);
         add(button);
         setLayout(null);
@@ -55,9 +42,11 @@ public class Frame extends JFrame {
     }
 
     public void startServer() {
+        try {
+            server.startThreads(clients, tab);
+        }catch(Exception e){
 
-        server.startThreads(clients, tab);
-
+        }
     }
 
     public void refresh() {
@@ -65,12 +54,12 @@ public class Frame extends JFrame {
         for (i = 0; i < 5; i++) {
             dfmS.add(new DefaultListModel<>());
             dfmS.get(i).clear();
-            dfmS.get(i).addElement("Server " + (i + 1));
-//            if (tab[i][0] != -1) {
+            dfmS.get(i).addElement("Server " + i);
+            if (tab[i][0] != -1) {
                 dfmS.get(i).addElement("Client " + tab[i][0]);
                 dfmS.get(i).addElement("File " + tab[i][1]);
-            dfmS.get(i).addElement("Size " + tab[i][2]);
-//            }
+                dfmS.get(i).addElement("Size " + tab[i][2]);
+            }
 
             fileListS = new JList(dfmS.get(i));
 
@@ -84,20 +73,18 @@ public class Frame extends JFrame {
         for (i = 0; i < clients.size(); i++) {
             dfm.add(new DefaultListModel<>());
             dfm.get(i).clear();
-            dfm.get(i).addElement("Client " + (i + 1));
+            dfm.get(i).addElement("Client " + i);
             for (j = 0; j < clients.get(i).filesList.size(); j++) {
-                dfm.get(i).addElement(clients.get(i).filesList.get(j).toString() + " MB");
+                if(clients.get(i).filesList.get(j)!=0)dfm.get(i).addElement(j + ": " + clients.get(i).filesList.get(j).toString() + " MB");
             }
             fileList = new JList(dfm.get(i));
 
             fileList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
             fileList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
             fileList.setVisibleRowCount(-1);
-            fileList.setBounds(10 + 80 * i, 100, 50, 500);
+            fileList.setBounds(10 + 95 * i, 100, 65, 500);
             add(fileList);
         }
-
-
         setLayout(null);
         setVisible(true);
     }

@@ -13,7 +13,7 @@ public class Main {
                 f.refresh();
             }
         };
-        Timer timer = new Timer(100 ,taskPerformer);
+        Timer timer = new Timer(100, taskPerformer);
         timer.setRepeats(true);
         timer.start();
 
