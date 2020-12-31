@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 public class Frame extends JFrame {
-    LoadBalancer loadBalancer = new LoadBalancer();
     Server server = new Server();
     int tab[][] = new int[5][3];
 
@@ -50,7 +49,6 @@ public class Frame extends JFrame {
     }
 
     public void refresh() {
-        //loadBalancer.printClients(clients);
         for (i = 0; i < 5; i++) {
             dfmS.add(new DefaultListModel<>());
             dfmS.get(i).clear();

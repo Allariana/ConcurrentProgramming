@@ -14,8 +14,6 @@ public class Server {
         }
         for (int i = 0; i < NUMBER_OF_THREADS; i++) {
             threads[i].start();
-            //wait(5);
-
         }
     }
 }
