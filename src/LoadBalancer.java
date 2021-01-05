@@ -5,6 +5,7 @@ public class LoadBalancer {
     Priority priority = new Priority();
     double max_priority = 0, min_priority = 1000, p;
     int i, j;
+    int actualSize=0;
 
     public int removeFileMin(ArrayList<Client> clients, int tab[][], int id) {
         int client_number_min = -1, file_index_min = -1;
@@ -12,10 +13,13 @@ public class LoadBalancer {
         int time = 0;
 
         for (i = 0; i < clients.size(); i++) {
-
+            actualSize = 0;
+            for (j = 0; j < clients.get(i).filesList.size(); j++) {
+                if(clients.get(i).filesList.get(j)!=0)actualSize +=1;
+            }
             for (j = 0; j < clients.get(i).filesList.size(); j++) {
                 if (clients.get(i).filesBusy.get(j) == 0) {
-                    p = priority.countPriority(i + 1, clients.get(i).filesList.get(j), clients.get(i).numberOfFiles);
+                    p = priority.countPriority(i + 1, clients.get(i).filesList.get(j), actualSize);
 
                     if (p < min_priority) {
                         time = clients.get(i).filesList.get(j) * 90;
@@ -43,10 +47,13 @@ public class LoadBalancer {
         int time = 0;
 
         for (i = 0; i < clients.size(); i++) {
-
+            actualSize = 0;
+            for (j = 0; j < clients.get(i).filesList.size(); j++) {
+                if(clients.get(i).filesList.get(j)!=0)actualSize +=1;
+            }
             for (j = 0; j < clients.get(i).filesList.size(); j++) {
                 if (clients.get(i).filesBusy.get(j) == 0) {
-                    p = priority.countPriority(i + 1, clients.get(i).filesList.get(j), clients.get(i).filesList.size());
+                    p = priority.countPriority(i + 1, clients.get(i).filesList.get(j), actualSize);
 
                     if (p > max_priority) {
                         time = clients.get(i).filesList.get(j) * 90;
