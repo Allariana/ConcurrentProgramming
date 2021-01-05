@@ -16,11 +16,19 @@ public class ServerMainThread implements Runnable {
     @Override
     public void run() {
         while (true) {
-            if (id != 4 && id != 3 && clients.size() > 0) { //2 watki odwrotnie
-                time = loadBalancer.removeFileMax(clients, tab, id);
-            } else if (clients.size() > 0) {
-                time = loadBalancer.removeFileMin(clients, tab, id);
+//            if (id != 4 && id != 3 && clients.size() > 0) { //2 watki odwrotnie
+//                time = loadBalancer.removeFileMax(clients, tab, id);
+//            } else if (clients.size() > 0) {
+//                time = loadBalancer.removeFileMin(clients, tab, id);
+//            }
+
+            try {
+                Thread.sleep(id * 100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+
+            time = loadBalancer.choseFileToLoad(clients, tab, id);
             try {
                 Thread.sleep(time);
                 if (tab[id][0] != -1) {
