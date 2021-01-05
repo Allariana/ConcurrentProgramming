@@ -16,12 +16,6 @@ public class ServerMainThread implements Runnable {
     @Override
     public void run() {
         while (true) {
-//            if (id != 4 && id != 3 && clients.size() > 0) { //2 watki odwrotnie
-//                time = loadBalancer.removeFileMax(clients, tab, id);
-//            } else if (clients.size() > 0) {
-//                time = loadBalancer.removeFileMin(clients, tab, id);
-//            }
-
             try {
                 Thread.sleep(id * 100);
             } catch (InterruptedException e) {
