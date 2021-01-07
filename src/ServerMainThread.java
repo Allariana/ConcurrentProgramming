@@ -17,7 +17,7 @@ public class ServerMainThread implements Runnable {
     public void run() {
         while (true) {
             try {
-                Thread.sleep(id * 100);
+                Thread.sleep(id * 80);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
